@@ -1,21 +1,23 @@
 package model;
 
+import java.util.List;
+
 public class Pessoa {
 	
 	public Pessoa() {}
 	
-	public Pessoa(int id, String nome, String email) {
+	public Pessoa(int id, String nome, String email, List<Endereco> enderecos) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.enderecos = enderecos;
 	}
 
 	private int id;
-	
 	private String nome;
-	
 	private String email;
+	private List<Endereco> enderecos;
 
 	public int getId() {
 		return id;
@@ -39,6 +41,14 @@ public class Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	@Override

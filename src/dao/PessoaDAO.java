@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Endereco;
 import model.Pessoa;
 
 public class PessoaDAO implements PessoaInDAO {
@@ -48,7 +49,11 @@ public class PessoaDAO implements PessoaInDAO {
 			String nome = rs.getString(2);
 			String email = rs.getString(3);
 			
-			Pessoa p = new Pessoa(id, nome, email);
+			EnderecoDAO daoEndereco = new EnderecoDAO(this.conexao);
+			
+			List<Endereco> enderecos = daoEndereco.listarTodosPorPessoa(id);
+			
+			Pessoa p = new Pessoa(id, nome, email, enderecos);
 			
 			pessoas.add(p);
 		}
@@ -101,7 +106,11 @@ public class PessoaDAO implements PessoaInDAO {
 			String nome = rs.getString(2);
 			String email = rs.getString(3);
 			
-			Pessoa p = new Pessoa(id, nome, email);
+			EnderecoDAO daoEndereco = new EnderecoDAO(this.conexao);
+			
+			List<Endereco> enderecos = daoEndereco.listarTodosPorPessoa(id);
+			
+			Pessoa p = new Pessoa(id, nome, email, enderecos);
 			
 			return p;
 		}
