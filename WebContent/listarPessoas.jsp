@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<%@ page import="java.util.*, model.Pessoa" %>
+<%@ page import="java.util.*, model.Pessoa, model.Endereco" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21,6 +21,7 @@
 					<th>ID</th>
 					<th>Nome</th>
 					<th>E-mail</th>
+					<th>Lista de Endereços</th>
 					<th colspan="2">...</th>
 				</tr>
 				<%
@@ -39,6 +40,21 @@
 							<td>
 								<%= p.getEmail() %>
 							</td>
+							
+							<td>
+								<%
+								for (Endereco end : p.getEnderecos())
+								{
+								%>
+								
+								<%= end.toString() %>
+								<br />
+								
+								<%
+								}
+								%>
+							</td>
+							
 							<td>
 								<a href="ExcluirPessoaServlet?id=<%= p.getId() %>">Excluir</a>
 							</td>
